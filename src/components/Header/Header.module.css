@@ -57,3 +57,7 @@ button:hover {
 button:focus {
   outline: none;
 }
+.email {
+  font-size: 1.8rem;
+  margin: 0;
+}

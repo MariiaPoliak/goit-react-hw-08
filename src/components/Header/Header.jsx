@@ -19,14 +19,16 @@ const Header = () => {
   return (
     <header className={s.header}>
       <h3>PhoneBook</h3>
-      {isLoggedIn && user && <div>{user.email}</div>}
+      {isLoggedIn && user && <div className={s.email}>{user.email}</div>}
       <nav className={s.nav}>
         <NavLink className={buildLinkClass} to="/">
           Home
         </NavLink>
-        <NavLink className={buildLinkClass} to="/contacts">
-          Contacts
-        </NavLink>
+        {isLoggedIn && (
+          <NavLink className={buildLinkClass} to="/contacts">
+            Contacts
+          </NavLink>
+        )}
         {!isLoggedIn ? (
           <>
             <NavLink className={buildLinkClass} to="/login">

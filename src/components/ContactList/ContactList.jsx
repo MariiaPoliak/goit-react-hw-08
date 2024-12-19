@@ -8,6 +8,7 @@ import {
 } from "../../redux/contacts/selectors";
 import Contact from "../Contact/Contact";
 import { selectSearchQuery } from "../../redux/filters/selectors";
+import { FiUsers } from "react-icons/fi";
 import s from "./ContactList.module.css";
 
 const ContactList = () => {
@@ -20,10 +21,6 @@ const ContactList = () => {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  const handleDelete = (id) => {
-    dispatch(deleteContact(id));
-  };
 
   const filteredContacts = contacts?.filter((contact) =>
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -42,11 +39,16 @@ const ContactList = () => {
   }
 
   return (
-    <ul className={s.contact_box}>
-      {filteredContacts.map((contact) => (
-        <Contact key={contact.id} contact={contact} />
-      ))}
-    </ul>
+    <div className={s.container}>
+      <h2 className={s.title}>
+        <FiUsers className={s.icon} /> Your Contacts
+      </h2>
+      <ul className={s.contact_box}>
+        {filteredContacts.map((contact) => (
+          <Contact key={contact.id} contact={contact} />
+        ))}
+      </ul>
+    </div>
   );
 };
 

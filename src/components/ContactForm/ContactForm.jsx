@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import toast from "react-hot-toast";
+import { FiUserPlus } from "react-icons/fi";
 import styles from "./ContactForm.module.css";
 
 const ContactForm = () => {
@@ -29,27 +30,32 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.formContainer}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-        required
-        className={styles.input}
-      />
-      <input
-        type="tel"
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}
-        placeholder="Phone Number"
-        required
-        className={styles.input}
-      />
-      <button className={styles.button} type="submit">
-        <span className={styles.icon}>+</span> Add Contact
-      </button>
-    </form>
+    <div className={styles.container}>
+      <h2 className={styles.title}>
+        <FiUserPlus className={styles.icon} /> Add New Contact
+      </h2>
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Name"
+          required
+          className={styles.input}
+        />
+        <input
+          type="tel"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          placeholder="Phone Number"
+          required
+          className={styles.input}
+        />
+        <button className={styles.button} type="submit">
+          <span className={styles.icon}>+</span> Add Contact
+        </button>
+      </form>
+    </div>
   );
 };
 

@@ -1,0 +1,7 @@
+.list_container {
+  margin-top: 80px;
+  background-image: url("/src/image/image.jpg");
+  background-size: contain;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}

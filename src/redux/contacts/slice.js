@@ -4,6 +4,7 @@ import {
   addContact,
   deleteContact,
   editContact,
+  logOut,
 } from "./operations";
 
 const initialState = {
@@ -47,8 +48,18 @@ const contactsSlice = createSlice({
           (item) => item.id === action.payload.id
         );
         if (index !== -1) state.items[index] = action.payload;
+      })
+
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+        state.loading = false;
+        state.error = null;
       });
   },
 });
+
+export const selectContacts = (state) => state.contacts.items;
+export const selectLoading = (state) => state.contacts.loading;
+export const selectError = (state) => state.contacts.error;
 
 export default contactsSlice.reducer;

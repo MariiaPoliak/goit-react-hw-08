@@ -27,3 +27,12 @@ export const editContact = createAsyncThunk(
   ({ id, name, number }) =>
     apiRequest(`/contacts/${id}`, "PATCH", { name, number })
 );
+
+export const logOut = createAsyncThunk("auth/logOut", async (_, thunkAPI) => {
+  try {
+    await apiRequest("/logout", "POST");
+    return;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
